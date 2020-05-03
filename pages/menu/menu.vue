@@ -133,15 +133,10 @@
 			<view class="cu-item ">
 				<view class="action">					
 					<text class="line-red text-bold">{{shopDiscount}}</text>	
-					<!-- <view class="line-red text-sm " v-for="(item,key) in shopDiscount" v-bind:key="key">{{item.name}}</view> -->
-								
 				</view>
-				<view class="action  text-sm basis-df text-right" @click="selectShop">
-					<!-- <text class="line-black ">{{shopName}}</text>
-					<text class="line-gray" >(选择门店)</text> -->
+				<!-- <view class="action  text-sm basis-df text-right" @click="selectShop">
 					<button class="cu-btn sm line-yellow">{{shopName}}(切换门店)</button>
-					<!-- <view class="pg-arrow"></view> -->
-				</view>
+				</view> -->
 			</view>
 		</view>
 			
@@ -299,8 +294,8 @@
 				
 				cardCur: 0,
 				swiperList:[
-					"/static/images/strong/swiper1_lg.jpg",
-					"/static/images/strong/swiper2_lg.jpg",
+					"/static/images/strong/swiper.jpg",
+					// "/static/images/strong/swiper2_lg.jpg",
 				],
 				
 				
@@ -360,6 +355,13 @@
 		},
 		onReady() {
 			// uni.hideLoading()
+		},
+		onShareAppMessage(){
+			return  {
+				title:"O.CT COFFEE",
+				path:"/pages/route/route",
+				imageUrl:"/static/images/strong/share.jpg",
+			}
 		},
 		methods: {
 			// 选择门店

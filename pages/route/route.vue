@@ -1,6 +1,6 @@
 <template>
 	<view class="flex align-center  box" :style="'background-color:' + bgColor">
-		<image class="cover" src="../../static/images/strong/loading.jpg" mode="widthFix"></image>
+		<!-- <image class="cover" src="../../static/images/strong/loading.jpg" mode="widthFix"></image> -->
 		<view class="flex justify-center " style="position: fixed; bottom: 20px;left: 0;right: 0;" >
 			<button class="cu-btn line-gray round" @click="clickTo">
 				点击进入
@@ -15,7 +15,7 @@
 			data(){
 				return{
 					bgColor:"#fef4ea",
-					ShopId:"",
+					ShopId:15,
 					ShopTakeType:"",
 				}
 			},
@@ -23,9 +23,9 @@
 				console.log(options)
 				
 				// var storeId = options.store_id || ""
-				this.setData({
-					ShopId : options.store_id || ""
-				})
+				// this.setData({
+				// 	ShopId : options.store_id || ""
+				// })
 				// var customerTakeType = options.type || ""
 				// this.customerTakeType = options.type || 2
 				uni.setStorageSync(this.db.KEY_SHOP_TAKE_TYPE ,options.type || "")
@@ -52,40 +52,47 @@
 			},
 			methods:{
 				clickTo(){
+					
 					uni.redirectTo({
-						url: '/pages/index/index'
+						url: '/pages/menu/menu'
 					});
 				},
 				async onInit(){
 					// return
+					// debugger
 					var res = await this.db.customerGetToken()
 					console.log('get token',res)
 					
-					var that = this
-					if(that.$data.ShopId == ""){
-						console.log('ShopId is null')
-						uni.redirectTo({
-							url: '/pages/index/index'
-						});
-						
-					}
+					uni.setStorageSync(this.db.KEY_SHOP_ID ,this.$data.ShopId )
+					uni.switchTab({
+						url: '/pages/menu/menu'
+					});
 					
-					else {
-						that.db.storeCurrent({
-							shopId:that.$data.ShopId
-						}).then(res=>{
-							console.log('storeCurrent' , res)
-							uni.setStorageSync(that.db.KEY_SHOP_NAME , res.data.Hosts)
-							uni.switchTab({
-								url:"/pages/menu/menu?ShopId=" + that.$data.ShopId
-							})
-						}).catch(res =>{
-							console.log('catch' , res)
-							uni.redirectTo({
-								url: '/pages/index/index'
-							});
-						})					
-					}		
+					// var that = this
+					// if(that.$data.ShopId == ""){
+					// 	console.log('ShopId is null')
+					// 	uni.redirectTo({
+					// 		url: '/pages/menu/menu?ShopId=' + that.$data.ShopId
+					// 	});
+						
+					// }
+					
+					// else {
+					// 	that.db.storeCurrent({
+					// 		shopId:that.$data.ShopId
+					// 	}).then(res=>{
+					// 		console.log('storeCurrent' , res)
+					// 		uni.setStorageSync(that.db.KEY_SHOP_NAME , res.data.Hosts)
+					// 		uni.switchTab({
+					// 			url:"/pages/menu/menu?ShopId=" + that.$data.ShopId
+					// 		})
+					// 	}).catch(res =>{
+					// 		console.log('catch' , res)
+					// 		uni.redirectTo({
+					// 			url: '/pages/index/index'
+					// 		});
+					// 	})					
+					// }		
 					
 					
 					// var that = this

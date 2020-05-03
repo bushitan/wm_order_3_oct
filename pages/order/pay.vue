@@ -1,14 +1,14 @@
 <template>
 	<view class="">
 		<!--状态栏区域-->
-		<view class="text-gray text-sm flex justify-center align-center bg-white" >
+		<!-- <view class="text-gray text-sm flex justify-center align-center bg-white" >
 			外卖下单可享受
 			<image src='/static/images/icon/sf_logo.png'
 				class="cu-avatar radius lg  bg-white margin-right-sm" 
 				style="width: 100px;" 
 				mode="widthFix"
 				></image>
-		 </view>
+		 </view> -->
 		 <view class="text-gray text-sm flex  align-center margin-top padding-left " >
 		 	营业时间：{{store.StartTimeBusinessHours || ""}} 至 {{store.EndTimeBusinessHours || ""}}
 		  </view>
@@ -293,6 +293,9 @@
 			async onInit(){ 
 				this.getOrder() // 获取已经选择的订单
 				
+				// this.setData({
+				// 	StoreId :uni.getStorageSync(this.db.KEY_SHOP_ID) || "",
+				// })
 				// 1 获取配送门店
 				var res = await this.db.storeGetList()
 				var storeList = res.data	
@@ -375,12 +378,12 @@
 				// debugger
 				switch(value){
 					case 1 : ShopTakeList = [{"name":"外卖",value:1}] ;break;
-					case 2 : ShopTakeList = [{"name":"到店自取",value:2}] ;break;
+					case 2 : ShopTakeList = [{"name":"自取",value:2}] ;break;
 					case 4 : ShopTakeList = [{"name":"堂食",value:4}] ;break;
-					case 3 : ShopTakeList = [{"name":"到店自取",value:2},{"name":"外卖",value:1}] ;break;
+					case 3 : ShopTakeList = [{"name":"自取",value:2},{"name":"外卖",value:1}] ;break;
 					case 5 : ShopTakeList = [{"name":"堂食",value:4},{"name":"外卖",value:1}] ;break;
-					case 6 : ShopTakeList = [{"name":"堂食",value:4},{"name":"到店自取",value:2}] ;break;
-					case 7 : ShopTakeList = [{"name":"堂食",value:4},{"name":"到店自取",value:2},{"name":"外卖",value:1}] ;break;
+					case 6 : ShopTakeList = [{"name":"堂食",value:4},{"name":"自取",value:2}] ;break;
+					case 7 : ShopTakeList = [{"name":"堂食",value:4},{"name":"自取",value:2},{"name":"外卖",value:1}] ;break;
 				}
 				
 				//如果桌面点单方式扫码已经确定

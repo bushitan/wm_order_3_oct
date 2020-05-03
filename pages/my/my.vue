@@ -24,10 +24,10 @@
 		
 		<view class="cu-card padding-lr margin-top">
 		    <view class=" pg-radius  shadow shadow-warp bg-white">
-				<image  src="/static/images/strong/swiper1.jpg" mode="widthFix" class="pg-image-block"></image>
+				<image  src="/static/images/strong/swiper.jpg" mode="widthFix" class="pg-image-block"></image>
 		    </view>
 		</view>
-		
+		<!-- 
 		<view class="cu-card padding-lr margin-top ">
 		    <view class=" pg-radius  shadow shadow-warp bg-white">
 		        <view class="cu-bar  solid-bottom ">
@@ -37,11 +37,10 @@
 		            </view>
 		            <view class="action">
 						<text class="text-grey  text-sm" @click="openMini">查看</text>
-						<!-- <button class="text-grey  text-sm" open-type="openSetting">打开setting</button> -->
 		            </view>
 		        </view>
 		    </view>
-		</view>
+		</view> -->
 		
 	<!-- 	<view class="cu-card padding-lr margin-top ">
 		    <view class=" pg-radius  shadow shadow-warp bg-white">
@@ -102,7 +101,7 @@
 		</view>
 		
 		<view class=" flex justify-center margin-top">
-		    <button class=" cu-btn round  text-gray text-sm"  type="" open-type="contact">联系Strong客服</button>
+		    <button class=" cu-btn round  text-gray text-sm"  type="" open-type="contact">联系客服</button>
 		</view>
 		
 		<view class=" padding-xs flex align-center margin-top-sm">

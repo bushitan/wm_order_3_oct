@@ -41,7 +41,7 @@ class dbBase{
 	SHIP_STATUS_CANCEL = 50 //已取消
 	
 	
-	APP_ID = "5099f520489646d28ce9df352237c059"  // Strong
+	APP_ID = "35b1dc0689e811ea9afe02fcdc4e7412"  // OCT
 	// APP_ID = "aaa418db45c94cf7863a30b3f97c7e30" // 门店安心卡 
 	
 	// URL = "http://221.7.253.6:9019/Api/Task/TaskHandler.ashx?"
