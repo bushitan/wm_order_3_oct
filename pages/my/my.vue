@@ -24,23 +24,23 @@
 		
 		<view class="cu-card padding-lr margin-top">
 		    <view class=" pg-radius  shadow shadow-warp bg-white">
-				<image  src="/static/images/strong/swiper.jpg" mode="widthFix" class="pg-image-block"></image>
+				<image  src="/static/images/strong/swiper1_1.jpg" mode="widthFix" class="pg-image-block"></image>
 		    </view>
 		</view>
-		<!-- 
+		
 		<view class="cu-card padding-lr margin-top ">
 		    <view class=" pg-radius  shadow shadow-warp bg-white">
 		        <view class="cu-bar  solid-bottom ">
 		            <view class="action">
 		                <text class="cuIcon-title text-yellow "></text>                
-		                <text class="text-black text-sm">我的集点卡</text>      
+		                <text class="text-black text-sm">小杯子集点卡</text>      
 		            </view>
 		            <view class="action">
-						<text class="text-grey  text-sm" @click="openMini">查看</text>
+						<text class="text-grey  text-sm" @click="openMini('a85e7854-c268-11e9-97aa-e95aa2c51b5d')">查看</text>
 		            </view>
 		        </view>
 		    </view>
-		</view> -->
+		</view>
 		
 	<!-- 	<view class="cu-card padding-lr margin-top ">
 		    <view class=" pg-radius  shadow shadow-warp bg-white">
@@ -200,11 +200,11 @@
 					url:"/pages/order/detail"
 				})
 			},
-			openMini(){
+			openMini(store_uuid){
 				console.log("openMini")
 				uni.navigateToMiniProgram({
 				  appId: 'wxd19bbe9cb3b293b6',
-				  path: 'pages/route/route?mode=store&store_uuid=68e54718-7156-11e9-b456-e95aa2c51b5d',
+				  path: 'pages/route/route?mode=store&store_uuid=' + store_uuid,
 				  // extraData: {
 				  //   'data1': 'test'
 				  // },

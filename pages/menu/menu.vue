@@ -134,9 +134,9 @@
 				<view class="action">					
 					<text class="line-red text-bold">{{shopDiscount}}</text>	
 				</view>
-				<!-- <view class="action  text-sm basis-df text-right" @click="selectShop">
+				<view class="action  text-sm basis-df text-right" @click="selectShop">
 					<button class="cu-btn sm line-yellow">{{shopName}}(切换门店)</button>
-				</view> -->
+				</view>
 			</view>
 		</view>
 			
@@ -294,7 +294,7 @@
 				
 				cardCur: 0,
 				swiperList:[
-					"/static/images/strong/swiper.jpg",
+					"/static/images/strong/swiper1.jpg",
 					// "/static/images/strong/swiper2_lg.jpg",
 				],
 				
@@ -337,7 +337,7 @@
 				
 				shopId:"",
 				shopName:"南湖店",
-				shopDiscount:"消费满40元减免顺丰配送费",
+				shopDiscount:"Seeking Coffee【桃源店】5月4日试业",
 			};
 		},
 		async onLoad(options) {
@@ -347,7 +347,7 @@
 			// });
 			this.setData({				
 				shopId:uni.getStorageSync(this.db.KEY_SHOP_ID) || "",
-				shopName:uni.getStorageSync(this.db.KEY_SHOP_NAME) || "",
+				shopName:uni.getStorageSync(this.db.KEY_SHOP_NAME) || "桃源店",
 			})			
 			this.onInit()					
 			// var that = this 
@@ -358,7 +358,7 @@
 		},
 		onShareAppMessage(){
 			return  {
-				title:"O.CT COFFEE",
+				// title:"O.CT COFFEE",
 				path:"/pages/route/route",
 				imageUrl:"/static/images/strong/share.jpg",
 			}
@@ -366,6 +366,8 @@
 		methods: {
 			// 选择门店
 			selectShop(){
+				
+				
 				uni.redirectTo({
 					url: '/pages/index/index'
 				});

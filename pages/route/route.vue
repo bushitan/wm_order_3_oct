@@ -1,8 +1,8 @@
 <template>
 	<view class="flex align-center  box" :style="'background-color:' + bgColor">
-		<!-- <image class="cover" src="../../static/images/strong/loading.jpg" mode="widthFix"></image> -->
+		<image class="cover" src="../../static/images/strong/swiper2.jpg" mode="widthFix"></image>
 		<view class="flex justify-center " style="position: fixed; bottom: 20px;left: 0;right: 0;" >
-			<button class="cu-btn line-gray round" @click="clickTo">
+			<button class="cu-btn line-white round" @click="clickTo">
 				点击进入
 			</button>
 		</view>
@@ -14,7 +14,7 @@
 		export default{
 			data(){
 				return{
-					bgColor:"#fef4ea",
+					bgColor:"#dcb898",
 					ShopId:15,
 					ShopTakeType:"",
 				}
@@ -53,7 +53,7 @@
 			methods:{
 				clickTo(){
 					
-					uni.redirectTo({
+					uni.switchTab({
 						url: '/pages/menu/menu'
 					});
 				},
@@ -64,9 +64,12 @@
 					console.log('get token',res)
 					
 					uni.setStorageSync(this.db.KEY_SHOP_ID ,this.$data.ShopId )
-					uni.switchTab({
-						url: '/pages/menu/menu'
-					});
+					
+					setTimeout(function(){
+						uni.switchTab({
+							url: '/pages/menu/menu'
+						});
+					},3000)
 					
 					// var that = this
 					// if(that.$data.ShopId == ""){
