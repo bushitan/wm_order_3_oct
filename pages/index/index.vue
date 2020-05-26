@@ -1,73 +1,57 @@
 <template>
 	<view >
-		<view class="">
-			<image src="../../static/images/strong/share.jpg" mode="widthFix" style="width: 100%; display: block;"></image>
+		<view class="flex   box" style="background-color:#dcb898; position: fixed; width: ;">
+			<image class="cover" src="../../static/images/strong/swiper2.jpg" mode="widthFix" ></image>
+			<!-- <view class="flex justify-center " style="position: fixed; bottom: 20px;left: 0;right: 0;" >
+				<button class="cu-btn line-gray round" @click="clickTo">
+					点击进入
+				</button>
+			</view> -->
+			
 		</view>
-		<view class="cu-card padding-lr  ">
-		    <view class=" pg-radius-bottom  shadow shadow-warp bg-white">				   
-			   <view class=" flex text-center text-grey  padding-bottom" >
-				   <view class="flex flex-sub flex-direction " @click="toMenu(item.id,item.name)" v-for="(item,key) in storeList" v:bind-key="key">
-						<view class="text-xxl page-font-yellow flex justify-center">
-							<image class="shop-icon " :src="item.url" mode="aspectFit"></image>
-						</view>
-						<view class=" page-flex-center text-sm">
-							<button  class="cu-btn bg-red  text-white round sm">{{item.name}}</button>							
-						</view>
-				   </view>
-				</view> 		
-				<view class="padding-lr padding-bottom" v-if="orderList.length > 0">
-					<view class="cu-bar  " style="background-color: #f1f1f1;">
-					    <view class="action margin-right-sm">
-							<text class="cuIcon-title text-yellow text-sm"></text> 
-							<view class="">
-								<view class="text-gray  text-bold text ">您当前有{{orderList.length}}个订单</view>
-							</view>
-					    </view>
-					    <view class="action ">
-					      <button class="cu-btn bg-yellow text-white round  " @click="toDetail()" data-target="menuModal">查看详情</button>
-					    </view>
+		<view style="height: 20vh;"></view>
+		<swiper class="card-swiper height-swiper square-dot" 
+		indicator-dots="true" circular="true" autoplay="true" 
+		interval="5000" duration="500" 
+		bindchange="cardSwiper" indicator-color="#ffffff" indicator-active-color="#ffffff"
+		style="height: calc(100vh - 20vh) !important;"
+		>
+		  <swiper-item v-for="(item,index) in storeList" v-bind:key="index" :class="[cardCur==index?'cur':'']">
+		    <view class="swiper-item padding">
+				<view class=" bg-white   shadow shadow-warp  padding-tb-xl" 
+				style="border-radius: 10px; ">
+					<view class="flex justify-center  ">
+						<image :src="item.url" mode="widthFix" style="width: 128px;" ></image>
 					</view>
+					<view style="min-height: 20vh;"></view>
+					<view class="text-center margin-top">
+						<button class="cu-btn round line-black " @click="toMenu(15,'seeking')">去点单</button>
+					</view>
+					<view class="text-center text-lg margin-top">{{item.name}}</view>
 				</view>
-		    </view>
-		</view>
-		
-		<view class="cu-card padding-lr margin-top ">
-			<swiper class="screen-swiper  " :indicator-dots="false" :circular="false" :autoplay="true" interval="5000"
-			 duration="500">
-				<swiper-item class="swiper-height block" v-for="(item,index) in swiperList" :key="index">
-					<image class="block" style="width: 100%;" :src="item" mode="widthFix"></image>
-				</swiper-item>
-			</swiper>
-		</view>
+				<view class="text-center  margin-top text-white ">{{item.address}}</view>
 				
-		<view class="cu-card padding-lr margin-top">
-		    <view class=" pg-radius  shadow shadow-warp bg-white">
-				<view class="cu-bar  solid-bottom " @click="toOrder()" >
-					<view class="action">
-						<text class="cuIcon-title text-yellow text-sm"></text> 
-						<text class="text-sm">订单中心</text> 	
-					</view>
-					<view class="action ">
-						<text class="text-grey  text-sm">所有订单</text>
-						<view class="pg-arrow"></view>
-				   </view>
-				</view>
+					
+				
+		    <!--  <video :src="item.url" autoplay loop muted show-play-btn="false" controls="false" objectFit="cover" v-if="item.type=='video'"></video>
+		      <image :src="item.url" mode="aspectFill" v-else></image> -->
 		    </view>
-		</view>
+		  </swiper-item>
+		</swiper>
 		
-		
+		<!--
 		<view class=" flex justify-center margin-top">
 		    <button class=" cu-btn round bg-darkGray text-gray text-sm"  type="" open-type="contact">联系Strong客服</button>
 		</view>
 		
-		<view class=" padding-xs flex align-center  margin-top-sm">
+		 <view class=" padding-xs flex align-center  margin-top-sm">
 		    <view class="flex-sub text-center">
 		        <view class=" text-df ">
 		            <text class="text-gray text-sm">Copyright © 2020 索骏科技提供技术支持</text>
 		        </view>           
 		    </view>
 		</view>
-		<view class="pg-space-xxl"></view>
+		<view class="pg-space-xxl"></view> -->
 	</view>
 </template>
 
@@ -75,6 +59,7 @@
 	export default {
 		data() {
 			return {
+				bgColor:"#fef4ea",
 				title: 'Hello',
 				isHost: true,
 				isSeller: true,
@@ -84,9 +69,26 @@
 						"/static/images/strong/swiper2_lg.jpg",
 					],
 				storeList:[
-					{name:"康浦店",id:1,url:"/static/images/strong/store_1.png"},
-					{name:"盛天地店",id:7,url:"/static/images/strong/store_2.png"},
-					{name:"南湖店",id:6,url:"/static/images/strong/store_3.png"},
+					{
+						name:"Seeking Coffee 【鲤湾店】",id:1,
+						url:"/static/images/strong/logo.jpg",
+						address:"青秀区鲤湾路1-5-15号",
+					},
+					{
+						name:"Seeking Coffee 【金源店】",id:7,
+						url:"/static/images/strong/logo.jpg",
+						address:"金湖路63号金源现代城103号F105号商铺",
+					},
+					{
+						name:"Seeking Coffee 【万象城店】",id:6,
+						url:"/static/images/strong/logo.jpg",
+						address:"民族大道万象城6层食间",
+					},
+					{
+						name:"Seeking Coffee 【桃源店】",id:6,
+						url:"/static/images/strong/logo.jpg",
+						address:"桃源路62号",
+					},
 				],
 				store:{},
 				orderList:[], //订单列表
@@ -119,7 +121,15 @@
 				uni.switchTab({
 					url:"/pages/menu/menu"
 				})				
-			},			
+			},
+			
+			// toMenu(id,name){
+			// 	uni.setStorageSync(this.db.KEY_SHOP_ID,id)
+			// 	uni.setStorageSync(this.db.KEY_SHOP_NAME,name)
+			// 	uni.switchTab({
+			// 		url:"/pages/menu/menu"
+			// 	})				
+			// },			
 			toOrder(){
 				uni.navigateTo({
 					url:"/pages/order/list"
@@ -139,10 +149,23 @@
 </script>
 
 <style>
-	
+	.box {
+		width: 100%;
+		height: 100vh;
+	}
+	.cover{
+		width: 100%;
+		display: block;
+		
+	}
 	page{
 	    background-color: var(--ghostWhite)
 	}
+	
+	.height-swiper{
+		height: 300px !important;
+	}
+	
 	.shop-icon{
 		width: 72px;
 		height: 72px;

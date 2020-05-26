@@ -66,8 +66,11 @@
 					uni.setStorageSync(this.db.KEY_SHOP_ID ,this.$data.ShopId )
 					
 					setTimeout(function(){
-						uni.switchTab({
-							url: '/pages/menu/menu'
+						// uni.switchTab({
+						// 	url: '/pages/menu/menu'
+						// });
+						uni.redirectTo({
+							url: '/pages/index/index'
 						});
 					},3000)
 					
