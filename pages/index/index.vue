@@ -21,15 +21,15 @@
 				<view class=" bg-white   shadow shadow-warp  padding-tb-xl" 
 				style="border-radius: 10px; ">
 					<view class="flex justify-center  ">
-						<image :src="item.url" mode="widthFix" style="width: 128px;" ></image>
+						<image :src="item.Logo" mode="widthFix" style="width: 128px;" ></image>
 					</view>
 					<view style="min-height: 20vh;"></view>
 					<view class="text-center margin-top">
-						<button class="cu-btn round line-black " @click="toMenu(15,'seeking')">去点单</button>
+						<button class="cu-btn round line-black " @click="toMenu(item.Id,item.CompanyName)">去点单</button>
 					</view>
-					<view class="text-center text-lg margin-top">{{item.name}}</view>
+					<view class="text-center text-lg margin-top">{{item.Name}}</view>
 				</view>
-				<view class="text-center  margin-top text-white ">{{item.address}}</view>
+				<view class="text-center  margin-top text-white ">{{item.CompanyAddress}}</view>
 				
 					
 				
@@ -69,26 +69,26 @@
 						"/static/images/strong/swiper2_lg.jpg",
 					],
 				storeList:[
-					{
-						name:"Seeking Coffee 【鲤湾店】",id:1,
-						url:"/static/images/strong/logo.jpg",
-						address:"青秀区鲤湾路1-5-15号",
-					},
-					{
-						name:"Seeking Coffee 【金源店】",id:7,
-						url:"/static/images/strong/logo.jpg",
-						address:"金湖路63号金源现代城103号F105号商铺",
-					},
-					{
-						name:"Seeking Coffee 【万象城店】",id:6,
-						url:"/static/images/strong/logo.jpg",
-						address:"民族大道万象城6层食间",
-					},
-					{
-						name:"Seeking Coffee 【桃源店】",id:6,
-						url:"/static/images/strong/logo.jpg",
-						address:"桃源路62号",
-					},
+				// 	{
+				// 		name:"Seeking Coffee【鲤湾店】",id:14,
+				// 		url:"/static/images/strong/logo.jpg",
+				// 		address:"青秀区鲤湾路1-5-15号",
+				// 	},
+				// 	{
+				// 		name:"Seeking Coffee【金源店】",id:4,
+				// 		url:"/static/images/strong/logo.jpg",
+				// 		address:"金湖路63号金源现代城103号F105号商铺",
+				// 	},
+				// 	{
+				// 		name:"Seeking Coffee【万象城店】",id:13,
+				// 		url:"/static/images/strong/logo.jpg",
+				// 		address:"民族大道万象城6层食间",
+				// 	},
+				// 	{
+				// 		name:"Seeking Coffee【桃源店】",id:15,
+				// 		url:"/static/images/strong/logo.jpg",
+				// 		address:"桃源路62号",
+				// 	},
 				],
 				store:{},
 				orderList:[], //订单列表
@@ -113,6 +113,14 @@
 				})	
 				this.setData({
 					orderList:res.data
+				})
+				
+				// 获取门店列表
+				var res = await this.db.storeGetList()
+				var storeList = res.data	
+				console.log(storeList)
+				this.setData({
+					storeList:storeList
 				})
 			},
 			toMenu(id,name){

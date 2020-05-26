@@ -53,8 +53,11 @@
 			methods:{
 				clickTo(){
 					
-					uni.switchTab({
-						url: '/pages/menu/menu'
+					// uni.switchTab({
+					// 	url: '/pages/menu/menu'
+					// });
+					uni.redirectTo({
+						url: '/pages/index/index'
 					});
 				},
 				async onInit(){
@@ -65,14 +68,16 @@
 					
 					uni.setStorageSync(this.db.KEY_SHOP_ID ,this.$data.ShopId )
 					
+					var that = this
 					setTimeout(function(){
 						// uni.switchTab({
 						// 	url: '/pages/menu/menu'
 						// });
-						uni.redirectTo({
-							url: '/pages/index/index'
-						});
-					},3000)
+						// uni.redirectTo({
+						// 	url: '/pages/index/index'
+						// });
+						that.clickTo()
+					},2000)
 					
 					// var that = this
 					// if(that.$data.ShopId == ""){

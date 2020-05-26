@@ -337,7 +337,7 @@
 				
 				shopId:"",
 				shopName:"南湖店",
-				shopDiscount:"Seeking Coffee【桃源店】5月4日试业",
+				shopDiscount:"Seeking Coffee【桃源店】5月30日正式开业！",
 			};
 		},
 		async onLoad(options) {
